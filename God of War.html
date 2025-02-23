@@ -49,7 +49,7 @@
       border-radius: 5px;
       border: none;
       width: 250px;
-      background-color: #white;
+      background-color: #ffffff;
       color: white;
     }
 
@@ -67,6 +67,7 @@
     .search-bar button:hover {
       background: #0e1329;
     }
+
 
     /* تصميم الأقسام */
     .sections {
@@ -340,24 +341,27 @@
         color: #fc0606; /* لون النص */
     }
 
-    /* زر الانتقال إلى الفيديو */
-    .scroll-to-video {
-        display: inline-block;
-        background-color: #ff4500; /* لون الزر */
-        color: white;
-        padding: 10px 20px; /* حجم الزر */
-        font-size: 23px;
-        font-weight: bold;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-top: 10px; /* مسافة بين الزر والمحتوى */
-        transition: background-color 0.3s ease;
-    }
+   /* زر الانتقال إلى الفيديو */
+.scroll-to-video {
+    display: inline-block;
+    background-color: #ff4500; /* لون الزر */
+    color: white;
+    padding: 10px 20px; /* حجم الزر */
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px; /* مسافة بين الزر والمحتوى */
+    transition: background-color 0.3s ease;
+    cursor: default; /* إزالة ظهور المؤشر */
+}
 
+.scroll-to-video:hover {
+    background-color: #0e1329; /* لون الزر عند التمرير */
+    cursor: default; /* التأكد من عدم تغيير المؤشر عند التمرير */
+}
 
-    .scroll-to-video:hover {
-        background-color: #0e1329; /* لون الزر عند التمرير */
-    }/* سهم التحميل */
+    /* سهم التحميل */
     .download-arrow {
         position: relative;
         text-align: center;
@@ -373,6 +377,43 @@
         margin: 0 auto; /* مركز السهم */
         animation: bounce 1s infinite; /* الحركة */
     }
+       
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search-bar input {
+                width: 80%;
+            }
+
+            .slider {
+                height: 35vh;
+            }
+
+            .game img {
+                height: 130px;
+            }
+
+            .section-box {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+        .logo img {
+    height: 50px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* تكبير اللوجو عند التمرير */
+    opacity: 0.8; /* تقليل الشفافية قليلاً */
+}
+
   </style>
 </head>
 <body>
@@ -383,18 +424,16 @@
       <button onclick="searchGames()">🔍 بحث</button>
     </div>
     <div class="site-title">PS4GAMEARABIC</div>
-    <div class="logo">
+    <div class="logo" onclick="location.href=('index.html')">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHcMvRugU93ejZqWSH9mMLSk6TKk9D9X15XRiNk85OEgnxeI9ZWuAcpVbhTUrSoUWWCdf7xNd_XyIt8rPWGDEIyO7DTDENTmNwr7OK_yQqw695CXEbA34JdePj__sUqoYnGVTEXwYngFnkqyJ64davRoQ-6Ga7XqvrPa8vOhQdGmbXcUd_2eehNrd0q_k/s1600/PS4GAMEARABIC-2-22-2025%20%284%29.png" alt="PS4 Logo">
     </div>
   </div>
 
   <!-- الأقسام -->
   <div class="sections">
-    <div class="section-box" onclick="alert('قسم ألعاب PS4')">🎮 PS4 GAMES</div>
-    <div class="section-box" onclick="alert('قسم الثيمات')">🎨 THEMES</div>
+    <div class="section-box" onclick="location.href=('قسم ألعاب PS4')">🎮 PS4 GAMES</div>
+    <div class="section-box" onclick="location.href=('قسم الثيمات')">🎨 THEMES</div>
   </div>
-
-  <!-- سلايدر الصور -->
   <div class="slider">
     <div class="slides" id="slider">
       <div class="slide">
@@ -406,13 +445,14 @@
       <div class="slide">
        <img src="https://a.top4top.io/p_3195zhp051.jpg" alt="لعبة 3">  
       </div>
+      <div class="slide">
       <img src="https://l.top4top.io/p_31946qggp1.jpg" alt="لعبة 4">  
       </div>
   </div>
-
+</div>
   <!-- عنوان اللعبة -->
-  <div class="game-title">  God of War </div>
-
+  <div class="game-title">God of War 4  </div>
+</div>
   <!-- الجدول -->
   <table>
     <thead>
@@ -456,27 +496,26 @@
   </table>
 <!-- زر الانتقال إلى الفيديو -->
 <div class="centered-content">
-    <a class="scroll-to-video" href="">CUSA16364 النسخة</a>
+    <a class="scroll-to-video" ="">CUSA16364 النسخة</a>
   </div>
   <!-- روابط التحميل (Download Links) -->
   <div class="download-buttons-container centered-content">  </div>
 
-    <a class="zr-download game-part" href="https://play3araby.blogspot.com/p/mortal-shell-game.html">تحميل اللعبة بارتات</a>  </div>
+  <a class="zr-download arabic-patch" href="https://play3araby.blogspot.com/p/mortal-shell-patch-arabic.html">تحميل التعريب 1.12</a>
 
     <a class="zr-download pkg-download" href="https://play3araby.blogspot.com/p/mortal-shell-game-pkg.html">PKG تحميل اللعبة</a>  </div>
 
-    <a class="zr-download arabic-patch" href="https://play3araby.blogspot.com/p/mortal-shell-patch-arabic.html">تحميل التعريب 1.12</a>
+    <a class="zr-download game-part" href="https://play3araby.blogspot.com/p/mortal-shell-game.html">تحميل اللعبة بارتات</a>  </div>
+  </div>
     <!-- زر الانتقال إلى الفيديو -->
   <div class="centered-content">
-    <a class="scroll-to-video" href="">CUSA20133 النسخة</a>
+    <a class="scroll-to-video"="">CUSA20133 النسخة</a>
   </div>
-    <a class="zr-download game-part" href="https://play3araby.blogspot.com/p/mortal-shell-game_10.html">تحميل اللعبة بارتات</a>  </div>
+  <a class="zr-download DLC-download" href="https://play3araby.blogspot.com/p/mortal-shell-dlc.html">تحميل DLC</a>
+  <a class="zr-download arabic-patch" href="https://play3araby.blogspot.com/p/mortal-shell-patch-arabic-108.htmll">1.08 تحميل التعريب</a>  </div>
+  <a class="zr-download game-part" href="https://play3araby.blogspot.com/p/mortal-shell-game_26.html">تحميل اللعبة ملف واحد</a>  </div>
+  <a class="zr-download game-part" href="https://play3araby.blogspot.com/p/mortal-shell-game_10.html">تحميل اللعبة بارتات</a>  </div>
 
-    <a class="zr-download game-part" href="https://play3araby.blogspot.com/p/mortal-shell-game_26.html">تحميل اللعبة ملف واحد</a>  </div>
-
-    <a class="zr-download arabic-patch" href="https://play3araby.blogspot.com/p/mortal-shell-patch-arabic-108.htmll">1.08 تحميل التعريب</a>  </div>
-
-    <a class="zr-download DLC-download" href="https://play3araby.blogspot.com/p/mortal-shell-dlc.html">تحميل DLC</a>
   </div>
 <!--User Reviews-->
 
@@ -484,9 +523,9 @@
    <!--روابط التحميل (Download Links)-->
 <div class="download-buttons-container">
     <div class="download-description"></div>
-    <a class="zr-download modpass-download " href="">FREE WAR GAMER</a>
-    <a class="zr-download modpass-download" href="">hako</a>
-    <a class="zr-download modpass-download "href="">downloadgameps3.com</a>
+    <a class="zr-download modpass-download " ="">FREE WAR GAMER</a>
+    <a class="zr-download modpass-download" ="">hako</a>
+    <a class="zr-download modpass-download "="">downloadgameps3.com</a>
     <!--سهم التحميل-->
     <div class="download-arrow">
         <div class="arrow"></div>
