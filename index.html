@@ -309,6 +309,99 @@
     height: 50px !important;
     object-fit: cover; /* الحفاظ على نسبة الصورة */
 }
+/* تحسين الاستجابة */
+@media (max-width: 1024px) {
+    /* تحسين البحث على الشاشات الصغيرة */
+    .search-bar input {
+        width: 60%;
+    }
+
+    .slider {
+        height: 40vh;
+    }
+
+    .game img {
+        height: 150px;
+    }
+
+    .section-box {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+}
+
+/* تحسين العرض للهواتف الصغيرة */
+@media (max-width: 768px) {
+    /* تعديل الخواص لتكون ملائمة للشاشات الأصغر */
+    .search-bar input {
+        width: 70%;
+    }
+
+    .slider {
+        height: 40vh;
+    }
+
+    .game img {
+        height: 150px;
+    }
+
+    .section-box {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+/* تصميم الهواتف الصغيرة جداً */
+@media (max-width: 480px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-bar input {
+        width: 80%;
+    }
+
+    .slider {
+        height: 35vh;
+    }
+
+    .game img {
+        height: 130px;
+    }
+
+    .section-box {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .game-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .game img {
+        height: 90%; /* اجعل الصورة تأخذ 90% من ارتفاع العنصر */
+        object-fit: cover; /* الحفاظ على تناسب الصورة مع <العنصر */
+    }
+
+    .game {
+        height: 700px; /* تحديد ارتفاع العنصر لتناسب الصورة */
+        padding: 7px; /* إلغاء أي تباعد حول العنصر */
+    }
+}
 
     </style>
 </head>
