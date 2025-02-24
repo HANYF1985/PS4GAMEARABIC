@@ -390,7 +390,7 @@
             }
 
             .slider {
-                height: 35vh;
+                height: auto;
             }
 
             .game img {
@@ -413,46 +413,22 @@
     transform: scale(1.1); /* تكبير اللوجو عند التمرير */
     opacity: 0.8; /* تقليل الشفافية قليلاً */
 }
-/* تصميم الأيقونات الاجتماعية */
-.social-links {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-}
 
-.social-icon {
-  width: 30px;
-  height: 30px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.social-icon:hover {
-  transform: scale(1.2);
-  opacity: 0.8;
-}
   </style>
 </head>
 <body>
-    <div class="header">
-        <div class="social-links">
-          <a href="https://facebook.com" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/1024px-Facebook_f_logo_%282019%29.svg.png" alt="Facebook" class="social-icon">
-          </a>
-          <a href="https://youtube.com" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" class="social-icon">
-          </a>
-          <a href="https://t.me" target="_blank">
-            <img src="https://img.icons8.com/?size=100&id=k4jADXhS5U1t&format=png&color=000000" alt="Telegram" class="social-icon">
-          </a>
-        </div>
-      
-        <div class="site-title">PS4GAMEARABIC</div>
-      
-        <div class="logo" onclick="location.href=('index.html')">
-          <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHcMvRugU93ejZqWSH9mMLSk6TKk9D9X15XRiNk85OEgnxeI9ZWuAcpVbhTUrSoUWWCdf7xNd_XyIt8rPWGDEIyO7DTDENTmNwr7OK_yQqw695CXEbA34JdePj__sUqoYnGVTEXwYngFnkqyJ64davRoQ-6Ga7XqvrPa8vOhQdGmbXcUd_2eehNrd0q_k/s1600/PS4GAMEARABIC-2-22-2025%20%284%29.png" alt="PS4 Logo">
-        </div>
-      </div>
-      
+  <!-- الهيدر -->
+  <div class="header">
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="ابحث عن لعبة...">
+      <button onclick="searchGames()">🔍 بحث</button>
+    </div>
+    <div class="site-title">PS4GAMEARABIC</div>
+    <div class="logo" onclick="location.href=('index.html')">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhHcMvRugU93ejZqWSH9mMLSk6TKk9D9X15XRiNk85OEgnxeI9ZWuAcpVbhTUrSoUWWCdf7xNd_XyIt8rPWGDEIyO7DTDENTmNwr7OK_yQqw695CXEbA34JdePj__sUqoYnGVTEXwYngFnkqyJ64davRoQ-6Ga7XqvrPa8vOhQdGmbXcUd_2eehNrd0q_k/s1600/PS4GAMEARABIC-2-22-2025%20%284%29.png" alt="PS4 Logo">
+    </div>
+  </div>
+
   <!-- الأقسام -->
   <div class="sections">
     <div class="section-box" onclick="location.href=('قسم ألعاب PS4')">🎮 PS4 GAMES</div>
