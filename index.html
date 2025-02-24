@@ -50,7 +50,7 @@
           border: none;
           width: 250px;
           background-color: #ffffff;
-          color: white;
+          color: rgb(42, 5, 5);
         }
     
         .search-bar button {
@@ -136,13 +136,18 @@
             gap: 20px;
             padding: 20px 0;
         }
-
         .game {
-            background: #3a3a3a;
-            border-radius: 8px;
-            padding: 10px;
-        }
-
+         background-color: #1d1a27;
+         border-style: solid;
+         border-width: 10px 10px 30px 10px;
+         height: 420px;
+         padding: 10px;
+         border-color: #E0DEDE00;
+         border-radius: 8px;
+         border: 2px solid #FFFFFF29;
+         transition: all 0.3s;   
+         box-shadow: 2px -3px 13px 17px rgba(0, 0, 0, 0.5);
+       }
         .game img {
             width: 100%;
             height: 200px;
@@ -158,19 +163,77 @@
         }
 
         .game a {
-            display: block;
-            margin-top: 8px;
-            padding: 8px;
-            background: #ff4500;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
+     display: block;
+     margin: 8px auto; /* يجعل الزر في المنتصف */
+     padding: 6px 12px; /* تقليل التباعد الداخلي */
+     width: 126px; /* تحديد العرض */
+     height: 19px; /* تحديد الارتفاع */
+     line-height: 19px; /* لضبط النص في منتصف الزر */
+     text-align: center;
+     background: #ff4500;
+     color: white;
+     text-decoration: none;
+     border-radius: 5px;
+     font-weight: bold;
+     font-size: 19px; /* تقليل حجم الخط */
+    }
+    .game a:hover {
+     background: #e03e00;
+    }
 
-        .game a:hover {
-            background: #e03e00;
+     .found-game {
+     width:320px  !important;
+     height: 400px !important;
+     margin: 10px auto !important; /* إضافة تباعد بين الألعاب */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+    }
+     
+    /* الحاوية الخاصة باللعبة */
+    .game {
+    background-color: #1d1a27;
+    border-style: solid;
+    border-width: 10px 10px 30px 10px;
+    padding: 10px;
+    border-color: #E0DEDE00;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF29;
+    transition: transform 0.3s ease-in-out;
         }
+        /* تأثير الصورة داخل العنصر */
+.game img {
+    width: 100%;
+    height: 85%;
+    object-fit: cover;
+}
+
+.game {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.game:hover {
+    transform: translateY(-10px); /* يتحرك إلى الداخل */
+    box-shadow: 0px 10px 20px rgba(255, 69, 0, 0.7); /* إضافة ظل عند تمرير الماوس */
+}
+
+.game:not(:hover) {
+    transform: translateY(0); /* عودة العنصر لمكانه الأصلي */
+    box-shadow: none; /* إزالة الظل */
+}
+.game {
+    transition: all 0.3s ease-in-out;
+}
+
+.game:hover {
+    filter: drop-shadow(0px 10px 20px rgba(255, 69, 0, 0.7));
+}
+
+
+.game:hover {
+    animation: pulse 1s infinite;
+}
+
 
         @media (max-width: 768px) {
             .search-bar input {
@@ -225,6 +288,27 @@
     transform: scale(1.1); /* تكبير اللوجو عند التمرير */
     opacity: 0.8; /* تقليل الشفافية قليلاً */
 }
+/* حاوية الألعاب التي سيتم ترتيبها */
+.games-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; /* توزيع المسافة بين العناصر */
+}
+
+/* إذا كان عدد الألعاب أكثر من 3، نستخدم Grid لتوزيع الألعاب بشكل مرتب */
+.games-container.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* تقسيم الأعمدة بشكل تلقائي */
+    gap: 20px;
+}
+
+/* تحديد الحجم الثابت للصور عند العثور على أكثر من 3 ألعاب */
+.game img.fixed-size {
+    width: 420px !important;
+    height: 50px !important;
+    object-fit: cover; /* الحفاظ على نسبة الصورة */
+}
 
     </style>
 </head>
@@ -278,19 +362,44 @@
     const games = [
         { title: "God of War", image: "https://p4.wallpaperbetter.com/wallpaper/402/640/44/uncharted-4-a-thief-s-end-nathan-drake-video-games-uncharted-wallpaper-preview.jpg", downloadLink: "God of War.html" },
         { title: "لعبة كرة القدم", image: "https://p4.wallpaperbetter.com/wallpaper/320/998/398/nathan-drake-uncharted-4-a-thiefs-end-best-games-of-2016-wallpaper-preview.jpg", downloadLink: "download_page2.html" },
-        { title: "لعبة المغامرات", image: "https://p4.wallpaperbetter.com/wallpaper/584/677/249/uncharted-uncharted-4-a-thief-s-end-nathan-drake-sam-drake-wallpaper-preview.jpg", downloadLink: "download_page3.html" },
+        { title: " spider", image: "https://p4.wallpaperbetter.com/wallpaper/584/677/249/uncharted-uncharted-4-a-thief-s-end-nathan-drake-sam-drake-wallpaper-preview.jpg", downloadLink: "download_page3.html" },
         { title: "لعبة سباق السيارات", image: "https://p4.wallpaperbetter.com/wallpaper/918/892/998/uncharted-uncharted-4-a-thief-s-end-wallpaper-preview.jpg", downloadLink: "download_page4.html" },
-        { title: "لعبة الزومبي", image: "https://p4.wallpaperbetter.com/wallpaper/149/214/774/dead-space-game-wallpaper-preview.jpg", downloadLink: "download_page5.html" },
+        { title: "God of War", image: "https://p4.wallpaperbetter.com/wallpaper/402/640/44/uncharted-4-a-thief-s-end-nathan-drake-video-games-uncharted-wallpaper-preview.jpg", downloadLink: "God of War.html" },
         { title: "لعبة الحرب العالمية", image: "https://p4.wallpaperbetter.com/wallpaper/101/144/677/call-of-duty-wallpaper-preview.jpg", downloadLink: "download_page6.html" },
         { title: "God of War", image: "https://p4.wallpaperbetter.com/wallpaper/402/640/44/uncharted-4-a-thief-s-end-nathan-drake-video-games-uncharted-wallpaper-preview.jpg", downloadLink: "God of War.html" },
         { title: "لعبة كرة القدم", image: "https://p4.wallpaperbetter.com/wallpaper/320/998/398/nathan-drake-uncharted-4-a-thiefs-end-best-games-of-2016-wallpaper-preview.jpg", downloadLink: "download_page2.html" },
-        { title: "لعبة المغامرات", image: "https://p4.wallpaperbetter.com/wallpaper/584/677/249/uncharted-uncharted-4-a-thief-s-end-nathan-drake-sam-drake-wallpaper-preview.jpg", downloadLink: "download_page3.html" },
-        { title: "لعبة سباق السيارات", image: "https://p4.wallpaperbetter.com/wallpaper/918/892/998/uncharted-uncharted-4-a-thief-s-end-wallpaper-preview.jpg", downloadLink: "download_page4.html" },
+        { title: "لعبةvvvvvvvvvvvv المغامرات", image: "https://p4.wallpaperbetter.com/wallpaper/584/677/249/uncharted-uncharted-4-a-thief-s-end-nathan-drake-sam-drake-wallpaper-preview.jpg", downloadLink: "download_page3.html" },
+        { title: "God of War", image: "https://p4.wallpaperbetter.com/wallpaper/402/640/44/uncharted-4-a-thief-s-end-nathan-drake-video-games-uncharted-wallpaper-preview.jpg", downloadLink: "God of War.html" },
         { title: "لعبة الزومبي", image: "https://p4.wallpaperbetter.com/wallpaper/149/214/774/dead-space-game-wallpaper-preview.jpg", downloadLink: "download_page5.html" },
-        { title: "لعبة الحرب العالمية", image: "https://p4.wallpaperbetter.com/wallpaper/101/144/677/call-of-duty-wallpaper-preview.jpg", downloadLink: "download_page6.html" }
+        { title: "call  ", image: "https://p4.wallpaperbetter.com/wallpaper/101/144/677/call-of-duty-wallpaper-preview.jpg", downloadLink: "download_page6.html" }
     ];
+   
+function createGameSection() {
+    const gameGrid = document.getElementById("game-grid");
+    games.forEach((game) => {
+        const gameDiv = document.createElement("div");
+        gameDiv.classList.add("game");
 
-    function createGameSection() {
+        const gameImage = document.createElement("img");
+        gameImage.src = game.image;
+        gameImage.alt = game.title;
+        gameDiv.appendChild(gameImage);
+
+        const gameTitle = document.createElement("div");
+        gameTitle.classList.add("game-title");
+        gameTitle.textContent = game.title;
+        gameDiv.appendChild(gameTitle);
+
+        const downloadLink = document.createElement("a");
+        downloadLink.href = game.downloadLink;
+        downloadLink.textContent = "تحميل اللعبة";
+        gameDiv.appendChild(downloadLink);
+
+        gameGrid.appendChild(gameDiv);
+    });
+}
+
+function createGameSection() {
         const gameGrid = document.getElementById("game-grid");
         games.forEach((game) => {
             const gameDiv = document.createElement("div");
@@ -314,17 +423,65 @@
             gameGrid.appendChild(gameDiv);
         });
     }
-
     createGameSection();
-    // البحث عن الألعاب
+// البحث عن الألعاب
 function searchGames() {
-  let searchInput = document.getElementById("search-input").value.toLowerCase();
-  if (searchInput.includes("mortal shell")) {
-    alert("تم العثور على Mortal Shell!");
-  } else {
-    alert("اللعبة غير موجودة، جرب البحث عن شيء آخر.");
-  }
+    let searchInput = document.getElementById("search-input").value.toLowerCase();
+    let games = document.querySelectorAll(".game");
+    let foundGames = [];
+
+    // إخفاء السلايدر أثناء البحث
+    document.querySelector(".slider").style.display = "none";
+
+    games.forEach(game => {
+        let title = game.querySelector(".game-title").textContent.toLowerCase();
+        if (title.includes(searchInput)) {
+            game.style.display = "block"; // عرض الألعاب المطابقة
+            game.classList.add("found-game");
+            foundGames.push(game);
+        } else {
+            game.style.display = "none"; // إخفاء الألعاب غير المطابقة
+            game.classList.remove("found-game");
+        }
+    });
+
+    // إذا تم العثور على أكثر من 3 ألعاب، نستخدم Grid لترتيبها
+    let gamesContainer = document.querySelector(".games-container");
+    if (foundGames.length > 3) {
+        gamesContainer.classList.add("grid"); // إضافة الكلاس لتفعيل Grid
+        foundGames.forEach(game => {
+            let img = game.querySelector("img");
+            img.classList.add("fixed-size"); // إضافة حجم ثابت للصور
+        });
+    } else {
+        gamesContainer.classList.remove("grid"); // إزالة Grid إذا كان أقل من 3
+        foundGames.forEach(game => {
+            let img = game.querySelector("img");
+            img.classList.remove("fixed-size"); // إزالة الحجم الثابت للصور
+        });
+    }
+
+    // إذا كانت الألعاب غير موجودة
+    if (foundGames.length === 0) {
+        alert("اللعبة غير موجودة، جرب البحث عن شيء آخر.");
+    }
 }
+
+// إعادة إظهار السلايدر عند إزالة النص من مربع البحث
+document.getElementById("search-input").addEventListener("input", function () {
+    if (this.value === "") {
+        document.querySelector(".slider").style.display = "block"; // إعادة إظهار السلايدر
+        document.querySelectorAll(".game").forEach(game => {
+            game.style.display = "block"; // إظهار جميع الألعاب
+        });
+    }
+});
+
+// إضافة البحث الحي عند الكتابة في مربع البحث
+document.getElementById("search-input").addEventListener("input", searchGames);
+
+
+
 </script>
 </body>
-</html>
+</html>      
