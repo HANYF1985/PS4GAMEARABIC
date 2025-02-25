@@ -95,7 +95,7 @@
         .slider {
             width: 95%;
             max-width: 800px;
-            height: 50vh;
+            height: 450px;
             overflow: hidden;
             position: relative;
             margin: 20px auto;
@@ -479,47 +479,23 @@
     setInterval(() => moveSlide(1), 3000); // تشغيل تلقائي
 
     const games = [
-        { title: "God of War 4", image: "https://tinyurl.com/ynww8kb5", downloadLink: "God of War.html" },
-        { title: "God of War Ragnarök  ", image: "https://tinyurl.com/8appbana", downloadLink: "download_page2.html" },
-        { title: " The Last of Us™ Part II", image: "https://tinyurl.com/49sdj45n", downloadLink: "download_page3.html" },
-        { title: "The Last of Us Remastered  ", image: "https://tinyurl.com/4n37vz8k", downloadLink: "download_page4.html" },
-        { title: "Marvels Spider Man", image: "https://tinyurl.com/2jvyr3bu", downloadLink: "God of War.html" },
-        { title: "Marvels Spider Man Miles Morales", image: "https://tinyurl.com/4kfe5ent", downloadLink: "God of War.html" },
-        { title: "Red Dead Redemption 2 ", image: "https://tinyurl.com/s832juzs", downloadLink: "God of War.html" },
-        { title: " Uncharted 4 A Thiefs End  ", image: "https://tinyurl.com/59pwwxym", downloadLink: "download_page2.html" },
-        { title: " Days Gone  ", image: "https://tinyurl.com/6dhf76nd", downloadLink: "download_page3.html" },
-        { title: " A Plague Tale Innocence  ", image: "https://tinyurl.com/6snh522f", downloadLink: "download_page3.html" },
-       
+        { title: "God of War 4", image: "images/godofwar4.jpg", downloadLink: "downloads/God_of_War.html" },
+        { title: "God of War Ragnarök", image: "images/gowragnarok.jpg", downloadLink: "downloads/God_of_War_Ragnarok.html" },
+        { title: "The Last of Us Part II", image: "images/tlou2.jpg", downloadLink: "downloads/The_Last_of_Us_2.html" },
+        { title: "The Last of Us Remastered", image: "images/tlou1.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
+        { title: "Marvels Spider Man", image: "images/marvelsSpiderman.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
+        { title: "Marvels Spider Man Miles Morales", image: "images/marvelsSpidermorales.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
+        { title: "Red Dead Redemption 2 ", image: "images/reddeadRed2.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
+        { title: "Uncharted 4 A Thiefs End ", image: "images/uncharted4.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
+        { title: "Days Gone ", image: "images/daysgone.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
+        { title: "A Plague Tale Innocence ", image: "images/aPlaguetale.jpg", downloadLink: "downloads/The_Last_of_Us_1.html" },
 
-    ];       
-   
-function createGameSection() {
-    const gameGrid = document.getElementById("game-grid");
-    games.forEach((game) => {
-        const gameDiv = document.createElement("div");
-        gameDiv.classList.add("game");
+    ];
 
-        const gameImage = document.createElement("img");
-        gameImage.src = game.image;
-        gameImage.alt = game.title;
-        gameDiv.appendChild(gameImage);
-
-        const gameTitle = document.createElement("div");
-        gameTitle.classList.add("game-title");
-        gameTitle.textContent = game.title;
-        gameDiv.appendChild(gameTitle);
-
-        const downloadLink = document.createElement("a");
-        downloadLink.href = game.downloadLink;
-        downloadLink.textContent = "تحميل اللعبة";
-        gameDiv.appendChild(downloadLink);
-
-        gameGrid.appendChild(gameDiv);
-    });
-}
-
-function createGameSection() {
+    function createGameSection() {
         const gameGrid = document.getElementById("game-grid");
+        gameGrid.innerHTML = ""; // مسح المحتوى القديم قبل إعادة الإضافة
+
         games.forEach((game) => {
             const gameDiv = document.createElement("div");
             gameDiv.classList.add("game");
@@ -542,64 +518,45 @@ function createGameSection() {
             gameGrid.appendChild(gameDiv);
         });
     }
+
     createGameSection();
-// البحث عن الألعاب
-function searchGames() {
-    let searchInput = document.getElementById("search-input").value.toLowerCase();
-    let games = document.querySelectorAll(".game");
-    let foundGames = [];
 
-    // إخفاء السلايدر أثناء البحث
-    document.querySelector(".slider").style.display = "none";
+    // البحث عن الألعاب
+    function searchGames() {
+        let searchInput = document.getElementById("search-input").value.toLowerCase();
+        let games = document.querySelectorAll(".game");
+        let foundGames = [];
 
-    games.forEach(game => {
-        let title = game.querySelector(".game-title").textContent.toLowerCase();
-        if (title.includes(searchInput)) {
-            game.style.display = "block"; // عرض الألعاب المطابقة
-            game.classList.add("found-game");
-            foundGames.push(game);
+        // إخفاء السلايدر أثناء البحث
+        document.querySelector(".slider").style.display = "none";
+
+        games.forEach(game => {
+            let title = game.querySelector(".game-title").textContent.toLowerCase();
+            if (title.includes(searchInput)) {
+                game.style.display = "block"; // عرض الألعاب المطابقة
+                game.classList.add("found-game");
+                foundGames.push(game);
+            } else {
+                game.style.display = "none"; // إخفاء الألعاب غير المطابقة
+                game.classList.remove("found-game");
+            }
+        });
+
+        // إذا تم العثور على أكثر من 3 ألعاب، نستخدم Grid لترتيبها
+        let gamesContainer = document.querySelector(".games-container");
+        if (foundGames.length > 3) {
+            gamesContainer.classList.add("grid"); // إضافة الكلاس لتفعيل Grid
+            foundGames.forEach(game => {
+                let img = game.querySelector("img");
+                img.classList.add("fixed-size"); // إضافة حجم ثابت للصور
+            });
         } else {
-            game.style.display = "none"; // إخفاء الألعاب غير المطابقة
-            game.classList.remove("found-game");
+            gamesContainer.classList.remove("grid");
         }
-    });
-
-    // إذا تم العثور على أكثر من 3 ألعاب، نستخدم Grid لترتيبها
-    let gamesContainer = document.querySelector(".games-container");
-    if (foundGames.length > 3) {
-        gamesContainer.classList.add("grid"); // إضافة الكلاس لتفعيل Grid
-        foundGames.forEach(game => {
-            let img = game.querySelector("img");
-            img.classList.add("fixed-size"); // إضافة حجم ثابت للصور
-        });
-    } else {
-        gamesContainer.classList.remove("grid"); // إزالة Grid إذا كان أقل من 3
-        foundGames.forEach(game => {
-            let img = game.querySelector("img");
-            img.classList.remove("fixed-size"); // إزالة الحجم الثابت للصور
-        });
     }
-
-    // إذا كانت الألعاب غير موجودة
-    if (foundGames.length === 0) {
-        alert("اللعبة غير موجودة، جرب البحث عن شيء آخر.");
-    }
-}
-
-// إعادة إظهار السلايدر عند إزالة النص من مربع البحث
-document.getElementById("search-input").addEventListener("input", function () {
-    if (this.value === "") {
-        document.querySelector(".slider").style.display = "block"; // إعادة إظهار السلايدر
-        document.querySelectorAll(".game").forEach(game => {
-            game.style.display = "block"; // إظهار جميع الألعاب
-        });
-    }
-});
-
-// إضافة البحث الحي عند الكتابة في مربع البحث
+    // إضافة البحث الحي عند الكتابة في مربع البحث
 document.getElementById("search-input").addEventListener("input", searchGames);
-
-
+</script>
 
 </script>
 </body>
