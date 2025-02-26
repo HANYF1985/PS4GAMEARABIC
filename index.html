@@ -556,8 +556,18 @@
     }
     // إضافة البحث الحي عند الكتابة في مربع البحث
 document.getElementById("search-input").addEventListener("input", searchGames);
-</script>
-
+     type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "PS4 Games Arabic",
+  "url": "https://ps4gamesarabic.com",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://ps4gamesarabic.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
 </script>
 </body>
 </html>      
