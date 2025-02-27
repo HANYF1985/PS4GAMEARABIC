@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hanyf1985.github.io/PS4GAMEARABIC/sitemap.xml
